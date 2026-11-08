@@ -1,16 +1,28 @@
 //main.c
 #include <stdio.h>
-#include <math.h>
 // Hello, 1234, -3\n57 2jlk345,650\t\n
+
+
+int stupid_pow(int a, int b) {
+    int res = 1;
+    if (b == 0) {return 1; }
+    for(b--; b > 0; b--) {
+        res *= a;
+    }
+    return res;
+}
+
 
 int print_in_bin(int n) {
     int power = 0;
-    while (n > pow(10, power + 1)) { power++; }
+    while (n > stupid_pow(10, power + 1)) { 
+        power++; 
+    }
 
-    int d = n / pow(10, power);
+    int d = n / stupid_pow(10, power);
     printf("%d: ", n);
 
-    for (power; power >= 0; power--) {
+    for (power; power > 0; power--) {
         switch (d) {
             case 0: printf("00%d ", 0); break;
             case 1: printf("00%d ", 1); break;
@@ -22,8 +34,8 @@ int print_in_bin(int n) {
             case 7: printf("%d ", 111); break;
         }
 
-        n %= (int)pow(10, power);
-        d = n / pow(10, power - 1);
+        n %= stupid_pow(10, power);
+        d = n / stupid_pow(10, power - 1);
     }
 
     printf("\n");
