@@ -2,9 +2,9 @@
 #include "1.c"
 
 // YES
-//    Во этом предложении   вО\n каждОм\n слове SоderjitsА╥ БYKво О
+//    Во этом предложении,вО\n каждОм\n слове SоderjitsА╥ БYKво О
 // NO
-//    Во этом предл|жении   вО\n каждОм\n слове SоderjitsА╥ БYKво О
+//    Во этом предл|жении,вО\n каждОм\n слове SоderjitsА╥ БYKво О
 
 int isLetter(unsigned int sym) {
     return ((ToUnicode("А") <= sym && sym <= ToUnicode("я")) || (sym == ToUnicode("Ё") || (sym == ToUnicode("ё"))));
@@ -43,7 +43,7 @@ int main() {
             readingWord = 1;
             word_vowels = putVowel(c, word_vowels);
         }
-        else if ((c == ToUnicode("\t")) || (c == ToUnicode(" ")) || (c == ToUnicode("\n"))) {
+        else if ((c == ToUnicode("\t")) || (c == ToUnicode(" ")) || (c == ToUnicode("\n")) || (c == ToUnicode(","))) {
             if (readingWord) { vowels &= word_vowels; }
             readingWord = 0;
             word_vowels = 0u;
